@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairMate", "HairMate\HairMate.csproj", "{2EEED95A-1EC3-42CC-9870-8DD1E47C7492}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{FAD370FF-D46F-40DA-89B9-49EBF872126D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A86DAA0E-255B-4CAD-84FC-9553EA485D46}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{A46E43EF-AC14-4D75-97C7-BC888C2E06D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{A44DD059-E525-4587-AA4F-463A569BFE87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{0235F2D2-17F5-40CA-BFA3-1B7817406A02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairMate.Application", "HairMate.Application\HairMate.Application.csproj", "{13F6C201-E57D-4308-ACCA-9B80B80042D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairMate.Domain", "HairMate.Domain\HairMate.Domain.csproj", "{5C879DAC-F97F-479C-A644-AAE8254FE384}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HairMate.Infrastructure", "HairMate.Infrastructure\HairMate.Infrastructure.csproj", "{9EA43ABC-A25E-4B54-A823-A300FE625A68}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2EEED95A-1EC3-42CC-9870-8DD1E47C7492}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EEED95A-1EC3-42CC-9870-8DD1E47C7492}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EEED95A-1EC3-42CC-9870-8DD1E47C7492}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EEED95A-1EC3-42CC-9870-8DD1E47C7492}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13F6C201-E57D-4308-ACCA-9B80B80042D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13F6C201-E57D-4308-ACCA-9B80B80042D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13F6C201-E57D-4308-ACCA-9B80B80042D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13F6C201-E57D-4308-ACCA-9B80B80042D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C879DAC-F97F-479C-A644-AAE8254FE384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C879DAC-F97F-479C-A644-AAE8254FE384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C879DAC-F97F-479C-A644-AAE8254FE384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C879DAC-F97F-479C-A644-AAE8254FE384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA43ABC-A25E-4B54-A823-A300FE625A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA43ABC-A25E-4B54-A823-A300FE625A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA43ABC-A25E-4B54-A823-A300FE625A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA43ABC-A25E-4B54-A823-A300FE625A68}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2EEED95A-1EC3-42CC-9870-8DD1E47C7492} = {0235F2D2-17F5-40CA-BFA3-1B7817406A02}
+		{13F6C201-E57D-4308-ACCA-9B80B80042D6} = {FAD370FF-D46F-40DA-89B9-49EBF872126D}
+		{5C879DAC-F97F-479C-A644-AAE8254FE384} = {A86DAA0E-255B-4CAD-84FC-9553EA485D46}
+		{9EA43ABC-A25E-4B54-A823-A300FE625A68} = {A46E43EF-AC14-4D75-97C7-BC888C2E06D8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FBCC11A-553C-4434-90B7-D20858890F35}
+	EndGlobalSection
+EndGlobal
