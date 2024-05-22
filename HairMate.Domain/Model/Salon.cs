@@ -22,5 +22,6 @@ namespace HairMate.Domain.Model
         public ICollection<Service> Services { get; set; }
         public ICollection<Employee> Employees { get; set; }
         public ICollection<Review> Reviews { get; set; }
+        public ICollection<Appointment> Appointments { get; set; }
     }
 }

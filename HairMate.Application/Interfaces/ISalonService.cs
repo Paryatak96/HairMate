@@ -22,5 +22,8 @@ namespace HairMate.Application.Interfaces
         Task<bool> ManageServicesAsync(int salonId, IEnumerable<Service> services);
         Task<bool> AddReviewAsync(int salonId, Review review);
         Task<bool> RespondToReviewAsync(int reviewId, string response);
+        Task<IEnumerable<Appointment>> GetAppointmentsBySalonIdAsync(int salonId);
+        public Task GenerateDailyAppointments(int salonId, DateTime date);
+        Task<Appointment> GetAppointmentByIdAsync(int appointmentId);
     }
 }

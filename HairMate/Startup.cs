@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HairMate.Application.Mapping;
 
 
 namespace HairMate
@@ -38,10 +39,6 @@ namespace HairMate
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<Context>()
-                .AddDefaultTokenProviders();
-
             services.AddControllersWithViews().AddFluentValidation(fv => fv.AutomaticValidationEnabled = false);
 
             services.AddRazorPages();
@@ -49,6 +46,8 @@ namespace HairMate
             services.AddApplication();
 
             services.AddInfrastructure();
+
+            services.AddAutoMapper(typeof(MappingProfile));
 
             services.Configure<IdentityOptions>(options =>
             {

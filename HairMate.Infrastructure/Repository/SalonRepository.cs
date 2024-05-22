@@ -118,5 +118,38 @@ namespace HairMate.Infrastructure.Repository
             _context.Salons.Update(salon);
             return await _context.SaveChangesAsync() > 0;
         }
+        public async Task<IEnumerable<Appointment>> GetAppointmentsBySalonIdAsync(int salonId)
+        {
+            return await _context.Appointments.Where(a => a.SalonId == salonId).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Appointment>> GetAppointmentsByDateAsync(int salonId, DateTime date)
+        {
+            return await _context.Appointments
+                .Where(a => a.SalonId == salonId && a.Date == date)
+                .ToListAsync();
+        }
+        public async Task AddAppointmentsAsync(IEnumerable<Appointment> appointments)
+        {
+            await _context.Appointments.AddRangeAsync(appointments);
+            await _context.SaveChangesAsync();
+        }
+        public async Task<bool> BookAppointmentAsync(int appointmentId)
+        {
+            var appointment = await _context.Appointments.FindAsync(appointmentId);
+            if (appointment == null || appointment.Status != "Available")
+            {
+                return false;
+            }
+
+            appointment.Status = "Booked";
+            _context.Appointments.Update(appointment);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        public async Task<Appointment> GetAppointmentByIdAsync(int appointmentId)
+        {
+            return await _context.Appointments.FindAsync(appointmentId);
+        }
     }
 }

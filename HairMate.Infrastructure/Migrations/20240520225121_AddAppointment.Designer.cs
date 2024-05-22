@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HairMate.Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20240516154605_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20240520225121_AddAppointment")]
+    partial class AddAppointment
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,42 @@ namespace HairMate.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("HairMate.Domain.Model.Appointment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("SalonId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<TimeSpan>("Time")
+                        .HasColumnType("time");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SalonId");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("Appointments");
+                });
 
             modelBuilder.Entity("HairMate.Domain.Model.Employee", b =>
                 {
@@ -354,6 +390,23 @@ namespace HairMate.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("HairMate.Domain.Model.Appointment", b =>
+                {
+                    b.HasOne("HairMate.Domain.Model.Salon", "Salon")
+                        .WithMany("Appointments")
+                        .HasForeignKey("SalonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("Salon");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("HairMate.Domain.Model.Employee", b =>
                 {
                     b.HasOne("HairMate.Domain.Model.Salon", "Salon")
@@ -440,6 +493,8 @@ namespace HairMate.Infrastructure.Migrations
 
             modelBuilder.Entity("HairMate.Domain.Model.Salon", b =>
                 {
+                    b.Navigation("Appointments");
+
                     b.Navigation("Employees");
 
                     b.Navigation("Reviews");

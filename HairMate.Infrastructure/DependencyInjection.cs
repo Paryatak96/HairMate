@@ -13,7 +13,7 @@ namespace HairMate.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            services.AddTransient<ISalonRepository, SalonRepository>();
+            services.AddScoped<ISalonRepository, SalonRepository>();
             return services;
         }
     }

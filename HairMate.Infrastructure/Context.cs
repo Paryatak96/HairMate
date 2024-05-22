@@ -15,6 +15,7 @@ namespace HairMate.Infrastructure
         public DbSet<Service> Services { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
 
         public Context(DbContextOptions options) : base(options) { }
 

@@ -44,5 +44,13 @@ namespace HairMate.Domain.Interface
 
         // Metoda do odpowiedzi na opinię w salonie
         Task<bool> RespondToReviewAsync(int reviewId, string response);
+
+
+
+        Task<IEnumerable<Appointment>> GetAppointmentsBySalonIdAsync(int salonId);
+        public Task<IEnumerable<Appointment>> GetAppointmentsByDateAsync(int salonId, DateTime date);
+        public Task AddAppointmentsAsync(IEnumerable<Appointment> appointments);
+        Task<bool> BookAppointmentAsync(int appointmentId);
+        Task<Appointment> GetAppointmentByIdAsync(int appointmentId);
     }
 }

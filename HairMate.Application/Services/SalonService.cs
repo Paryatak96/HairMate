@@ -17,9 +17,10 @@ namespace HairMate.Application.Services
         private readonly ISalonRepository _salonRepository;
         private readonly IMapper _mapper;
 
-        public SalonService(ISalonRepository salonRepository)
+        public SalonService(ISalonRepository salonRepository, IMapper mapper)
         {
             _salonRepository = salonRepository;
+            _mapper = mapper;
         }
 
         public ListSalonForListVm GetAllSalonsAsync(int pageSize, int pageNo, string searchString)
@@ -92,6 +93,50 @@ namespace HairMate.Application.Services
         public async Task<bool> RespondToReviewAsync(int reviewId, string response)
         {
             return await _salonRepository.RespondToReviewAsync(reviewId, response);
+        }
+
+        public async Task<IEnumerable<Appointment>> GetAppointmentsBySalonIdAsync(int salonId)
+        {
+            var appointments = await _salonRepository.GetAppointmentsBySalonIdAsync(salonId);
+            return appointments.Where(a => a.Status == "Available").ToList();
+        }
+
+        public async Task GenerateDailyAppointments(int salonId, DateTime date)
+        {
+            var existingAppointments = await _salonRepository.GetAppointmentsByDateAsync(salonId, date);
+            if (existingAppointments.Any(a => a.Status != "Booked")) return;
+
+            var appointments = new List<Appointment>();
+            var startTime = new TimeSpan(9, 0, 0); // Start at 9:00 AM
+            var endTime = new TimeSpan(17, 0, 0); // End at 5:00 PM
+            var duration = new TimeSpan(1, 0, 0); // 1-hour slots
+
+            for (var time = startTime; time < endTime; time += duration)
+            {
+                if (time == new TimeSpan(12, 0, 0)) // Skip lunch break from 12:00 PM to 1:00 PM
+                {
+                    continue;
+                }
+
+                appointments.Add(new Appointment
+                {
+                    SalonId = salonId,
+                    Date = date,
+                    Time = time,
+                    Status = "Available"
+                });
+            }
+
+            await _salonRepository.AddAppointmentsAsync(appointments);
+        }
+                public async Task<bool> BookAppointmentAsync(int appointmentId)
+        {
+            return await _salonRepository.BookAppointmentAsync(appointmentId);
+        }
+
+        public async Task<Appointment> GetAppointmentByIdAsync(int appointmentId)
+        {
+            return await _salonRepository.GetAppointmentByIdAsync(appointmentId);
         }
     }
 }

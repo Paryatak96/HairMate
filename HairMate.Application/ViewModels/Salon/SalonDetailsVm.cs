@@ -21,6 +21,8 @@ namespace HairMate.Application.ViewModels.Salon
         public string Street { get; set; }
         public string PostalCode { get; set; }
         public string PaymentType { get; set; }
+        public HairMate.Domain.Model.Salon Salon { get; set; }
+        public IEnumerable<Appointment> Appointments { get; set; }
         public ICollection<Service> Services { get; set; }
         public ICollection<Employee> Employees { get; set; }
         public ICollection<Review> Reviews { get; set; }
